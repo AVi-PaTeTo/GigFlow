@@ -71,9 +71,24 @@ root/
 | ------ | ------------------ | ------------------------------------------- |
 | GET    | `/api/bids/me`     | Fetch all bids placed by the signed-in user |
 | GET    | `/api/bids/:gigId` | Fetch all bids for a specific gig           |
-| PATCH  | `/api/bids/:bidId` | Hire a bidder (transactional)               |
+| PATCH  | `/api/bids/:id/hire` | Hire a bidder (transactional)               |
 | POST   | `/api/bids`        | Create a new bid                            |
 
+### Hire a Bid
+
+```
+PATCH /api/bids/:id/hire
+```
+
+* Requires authentication
+* Only the gig owner may perform this action
+* Executes a MongoDB transaction
+
+Success response:
+
+```json
+{ "message": "Bid hired successfully" }
+```
 
 ---
 
@@ -139,42 +154,24 @@ This flow is concurrency-safe and cannot leave the system in a partial state.
 
 ---
 
-## API Overview
-
-### Hire a Bid
-
-```
-PATCH /api/bids/:id
-```
-
-* Requires authentication
-* Only the gig owner may perform this action
-* Executes a MongoDB transaction
-
-Success response:
-
-```json
-{ "message": "Bid hired successfully" }
-```
-
----
-
 ## Demo
 
-A minute Loom video demonstrates:
+A minute long video demo:
 
-Client:
-    * Login
-    * Create a gig
-    * Check his profile
-    * Opening a gig
-    * Viewing bids
-    * Hiring a freelancer
-    * Live UI update of statuses
+
+
+Client
+* Login
+* Create a gig
+* Check his profile
+* Opening a gig
+* Viewing bids
+* Hiring a freelancer
+* Live UI update of statuses
 
 Freelancer:
-    * Searches for the gig
-    * Places a bid
+* Searches for the gig
+* Places a bid
 
 ---
 
