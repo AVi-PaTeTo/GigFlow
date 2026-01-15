@@ -160,6 +160,10 @@ A minute long video demo:
 
 
 
+https://github.com/user-attachments/assets/fd0fb76a-104f-4623-8d86-d530d0a968b5
+
+
+
 Client
 * Login
 * Create a gig
