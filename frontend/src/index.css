@@ -1,0 +1,91 @@
+@font-face {
+  font-family: Crisis;
+  src: url('../src/assets/fonts/ClimateCrisis.woff2');
+}
+
+@font-face {
+  font-family: Work;
+  src: url('../src/assets/fonts/WorkSans.ttf');
+}
+
+@font-face {
+  font-family: Rammetto;
+  src: url('../src/assets/fonts/RammettoOne-Regular.ttf');
+}
+
+@import 'tailwindcss';
+
+
+@theme{
+  --font-crisis: Crisis, "sans-serif";
+  --font-work: Work, "sans-serif";
+  --font-rammetto: Rammetto, "sans-serif"
+}
+
+@theme{
+  --animate-hbounce: hbounce .8s ease-in-out infinite;
+
+  @keyframes hbounce {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(5px); }
+      100% { transform: translateX(0); }
+  }
+}
+
+:root {
+  font-family: Work ,system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.3;
+  font-weight: 400;
+
+  color-scheme: normal;
+  color: rgba(0, 0, 0, 0.884);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hide-scrollbar {
+    /* IE and Edge */
+    -ms-overflow-style: none;
+    /* Firefox */
+    scrollbar-width: none;
+    /* Safari and Chrome */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.loader {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        position: relative;
+        animation: rotate 1s linear infinite
+      }
+      .loader::before , .loader::after {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        inset: 0px;
+        border-radius: 50%;
+        border: 5px solid #FFF;
+        animation: prixClipFix 2s linear infinite ;
+      }
+      .loader::after{
+        transform: rotate3d(90, 90, 0, 180deg );
+        border-color: oklch(70.2% 0.183 293.541);
+      }
+
+      @keyframes rotate {
+        0%   {transform: rotate(0deg)}
+        100%   {transform: rotate(360deg)}
+      }
+
+      @keyframes prixClipFix {
+          0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+          50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+          75%, 100%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+      }

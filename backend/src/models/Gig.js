@@ -1,0 +1,13 @@
+import mongoose from 'mongoose'
+
+const gigSchema = new mongoose.Schema({
+    ownerId: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
+    title: {type: String, required: true},
+    description: {type: String, required: true},
+    budget: {type: Number, required: true},
+    duration: {type: Number, required: true},
+    status: {type: String, enum: ['open', 'assigned'], default: 'open'}
+})
+
+const Gig = mongoose.model('Gig', gigSchema)
+export default Gig
